@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domain Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto; /* Center the container horizontally and add margin to all sides */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        p {
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 97%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+	    resize: none;
+        }
+
+        .extension-labels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .extension-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .extension-checkbox {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+     #filteredDomains {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+        max-height: 300px;
+        overflow-y: auto;
+        width: 97%;
+        height: 200px;
+        margin: 0 auto; /* Center the container horizontally */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Domain Filter</h1>
+        <p>Enter your domains and select the extensions to delete:</p>
+
+        <textarea id="domainInput" rows="10" cols="40"></textarea><br><br>
+
+        <!-- Generate checkboxes for common domain extensions -->
+        <div class="extension-labels" id="extensionCheckboxes">
+        <label><input type="checkbox" value="org"> .org</label>
+        <label><input type="checkbox" value="com"> .com</label>
+        <label><input type="checkbox" value="net"> .net</label>
+        <label><input type="checkbox" value="me"> .me</label>
+        <label><input type="checkbox" value="store"> .store</label>
+        <label><input type="checkbox" value="shop"> .shop</label>
+        <label><input type="checkbox" value="info"> .info</label>
+        <label><input type="checkbox" value="co"> .co</label>
+        <label><input type="checkbox" value="eu"> .eu</label>
+        <label><input type="checkbox" value="homes"> .homes</label>
+        <label><input type="checkbox" value="co.in"> .co.in</label>
+        <label><input type="checkbox" value="cfd"> .cfd</label>
+        <label><input type="checkbox" value="rest"> .rest</label>
+        <label><input type="checkbox" value="sbs"> .sbs</label>
+        <label><input type="checkbox" value="fun"> .fun</label>
+        <label><input type="checkbox" value="autos"> .autos</label>
+        <label><input type="checkbox" value="icu"> .icu</label>
+        <label><input type="checkbox" value="cc"> .cc</label>
+        <label><input type="checkbox" value="hair"> .hair</label>
+        <label><input type="checkbox" value="lol"> .lol</label>
+        <label><input type="checkbox" value="de"> .de</label>
+        <label><input type="checkbox" value="live"> .live</label>
+        <label><input type="checkbox" value="cloud"> .cloud</label>
+        <label><input type="checkbox" value="skin"> .skin</label>
+        <label><input type="checkbox" value="uk"> .uk</label>
+        <label><input type="checkbox" value="bond"> .bond</label>
+        <label><input type="checkbox" value="click"> .click</label>
+        <label><input type="checkbox" value="io"> .io</label>
+        <label><input type="checkbox" value="app"> .app</label>
+        <label><input type="checkbox" value="dev"> .dev</label>
+        <label><input type="checkbox" value="tech"> .tech</label>
+        <label><input type="checkbox" value="online"> .online</label>
+        <label><input type="checkbox" value="site"> .site</label>
+        <label><input type="checkbox" value="blog"> .blog</label>
+        <label><input type="checkbox" value="web"> .web</label>
+        <label><input type="checkbox" value="news"> .news</label>
+        <label><input type="checkbox" value="tv"> .tv</label>
+        <label><input type="checkbox" value="guru"> .guru</label>
+        <label><input type="checkbox" value="pro"> .pro</label>
+        <label><input type="checkbox" value="club"> .club</label>
+        <label><input type="checkbox" value="design"> .design</label>
+        <label><input type="checkbox" value="press"> .press</label>
+        <label><input type="checkbox" value="services"> .services</label>
+        <label><input type="checkbox" value="xyz"> .xyz</label>
+        <label><input type="checkbox" value="world"> .world</label>
+        <label><input type="checkbox" value="space"> .space</label>
+        <label><input type="checkbox" value="ninja"> .ninja</label>
+        <label><input type="checkbox" value="media"> .media</label>
+        <label><input type="checkbox" value="life"> .life</label>
+        <label><input type="checkbox" value="money"> .money</label>
+        <label><input type="checkbox" value="golf"> .golf</label>
+        <label><input type="checkbox" value="beer"> .beer</label>
+        <label><input type="checkbox" value="garden"> .garden</label>
+        <label><input type="checkbox" value="tours"> .tours</label>
+        <label><input type="checkbox" value="guide"> .guide</label>
+        <label><input type="checkbox" value="tips"> .tips</label>
+        <label><input type="checkbox" value="today"> .today</label>
+        <label><input type="checkbox" value="party"> .party</label>
+        <label><input type="checkbox" value="pics"> .pics</label>
+        <label><input type="checkbox" value="photo"> .photo</label>
+        <label><input type="checkbox" value="center"> .center</label>
+        <label><input type="checkbox" value="win"> .win</label>
+        <label><input type="checkbox" value="work"> .work</label>
+        <label><input type="checkbox" value="email"> .email</label>
+        <label><input type="checkbox" value="marketing"> .marketing</label>
+        <!-- Add more extensions here -->
+        </div>
+
+        <br><br>
+        <button onclick="filterDomains()">Filter Domains</button><br><br>
+
+        <h2>Filtered Domains:</h2>
+        <textarea id="filteredDomains" readonly></textarea>
+    </div>
+
+    <script>
+       function filterDomains() {
+    // Get the input text and split it into an array of domains
+    const domainInput = document.getElementById("domainInput").value;
+    const domains = domainInput.split(/\s+/);
+
+    // Get the state of each checkbox and store extensions in an array
+    const extensionCheckboxes = document.querySelectorAll("#extensionCheckboxes input[type=checkbox]");
+    const selectedExtensions = Array.from(extensionCheckboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    // Filter domains based on the selected extensions
+    const filteredDomains = domains.filter(domain => {
+        const extension = domain.split('.').pop();
+        return !selectedExtensions.includes(extension);
+    });
+
+    // Create a string with newline characters
+    const filteredDomainsText = filteredDomains.join("\n");
+
+    // Display the filtered domains in the non-modifiable textarea
+    const filteredDomainsTextarea = document.getElementById("filteredDomains");
+    filteredDomainsTextarea.value = filteredDomainsText;
+}
+
+    </script>
+</body>
+</html>
